@@ -4,6 +4,12 @@
   html,
   body {
     @apply font-light;
+    @apply bg-dodgeBlue-50;
+    font-size: '16px';
+  }
+
+  body {
+    @apply min-h-screen;
   }
 
   h1,
