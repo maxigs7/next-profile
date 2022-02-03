@@ -22,10 +22,10 @@
       "@/containers/*": ["containers/*"],
       "@/lib": ["lib"],
       "@/lib/*": ["lib/*"],
+      "@/model": ["model"],
+      "@/model/*": ["model/*"],
       "@/styles": ["styles"],
-      "@/styles/*": ["styles/*"],
-      "@/theme": ["theme"],
-      "@/theme/*": ["theme/*"]
+      "@/styles/*": ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
