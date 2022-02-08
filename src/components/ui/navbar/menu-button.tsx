@@ -1,4 +1,5 @@
 import { MenuIcon } from '@/components/icons';
+import React from 'react';
 import { ComponentProps } from 'react';
 
 const MenuButton: React.FC<ComponentProps<'button'>> = (props) => {
@@ -16,4 +17,4 @@ const MenuButton: React.FC<ComponentProps<'button'>> = (props) => {
   );
 };
 
-export default MenuButton;
+export default React.memo(MenuButton);

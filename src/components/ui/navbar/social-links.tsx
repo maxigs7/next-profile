@@ -1,4 +1,5 @@
 import { GithubIcon, LinkedinIcon } from '@/components/icons';
+import React from 'react';
 
 const SocialLinks: React.FC = () => {
   return (
@@ -13,4 +14,4 @@ const SocialLinks: React.FC = () => {
   );
 };
 
-export default SocialLinks;
+export default React.memo(SocialLinks);
