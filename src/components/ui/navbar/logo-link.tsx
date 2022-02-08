@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 import { LogoFull, LogoRounded } from '../logo';
 
 const LogoLink: React.FC = () => {
@@ -12,4 +13,4 @@ const LogoLink: React.FC = () => {
   );
 };
 
-export default LogoLink;
+export default React.memo(LogoLink);
