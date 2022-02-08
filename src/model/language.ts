@@ -1,4 +1,5 @@
 export interface ILanguage {
-  language: string;
+  code: string;
+  name: string;
   level: number;
 }
