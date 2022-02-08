@@ -1,34 +1,27 @@
-import { AboutMeCard, AboutMeSummary, Page, UserCircleIcon } from '@/components';
+import { AboutMeCard, AboutMeSummary, Page } from '@/components';
 import { IProfile } from '@/model';
 import Head from 'next/head';
 
-interface IHomePage {
+interface IAboutMePage {
   profile: IProfile;
 }
 
-export default function Home({ profile }: IHomePage) {
-  return (
-    <Page
-      className="h-screen w-screen"
-      icon={<UserCircleIcon className="h-12 w-12 mr-1" />}
-      title="About Me"
-    >
-      <Head>
-        <title>MGS - About Me</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="pt-16 flex flex-col gap-10">
-        <AboutMeCard profile={profile} className="mt-10 md:mt-5" />
-        {profile.summary && <AboutMeSummary summary={profile.summary} />}
-      </div>
-    </Page>
-  );
-}
+const AboutMePage: React.FC<IAboutMePage> = ({ profile }) => (
+  <Page className="h-screen w-screen" icon="user-circle" title="About Me">
+    <Head>
+      <title>MGS - About Me</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+    <div className="pt-16 flex flex-col gap-10">
+      <AboutMeCard profile={profile} className="mt-10 md:mt-5" />
+      {profile.summary && <AboutMeSummary summary={profile.summary} />}
+    </div>
+  </Page>
+);
 
-// This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries.
-export async function getStaticProps() {
+export default AboutMePage;
+
+export async function getStaticProps(): Promise<{ props: IAboutMePage }> {
   return {
     props: {
       profile: {
