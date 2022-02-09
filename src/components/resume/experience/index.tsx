@@ -1,7 +1,7 @@
 import cx from '@/lib/classnames';
 import { IWork } from '@/model';
 import { ComponentProps } from 'react';
-import line from '../common/line';
+import { lineLarge } from '../common/line';
 import Title from '../common/title';
 import ExperienceItem from './item';
 
@@ -16,7 +16,7 @@ const ExperienceList: React.FC<IProps> = ({ className, experiences = [] }) => (
     </Title>
     <div className="flex flex-col gap-8 md:gap-16 items-center">
       {experiences.map((exp) => (
-        <ExperienceItem className={cx('max-w-lg', line)} key={exp.id} {...exp} />
+        <ExperienceItem className={cx('max-w-lg', lineLarge)} key={exp.id} {...exp} />
       ))}
     </div>
   </div>
