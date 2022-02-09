@@ -1,13 +1,19 @@
-import { Page, ResumeExperienceList, ResumeLanguageList } from '@/components';
-import { ILanguage, IWork } from '@/model';
+import {
+  Page,
+  ResumeCertificateList,
+  ResumeExperienceList,
+  ResumeLanguageList,
+} from '@/components';
+import { ICertificate, ILanguage, IWork } from '@/model';
 import Head from 'next/head';
 
 interface IResumePage {
+  certificates: ICertificate[];
   experiences: IWork[];
   languages: ILanguage[];
 }
 
-const ResumePage: React.FC<IResumePage> = ({ experiences, languages }) => (
+const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages }) => (
   <Page isContainer={false} className="h-screen" icon="identification" title="Resume">
     <Head>
       <title>MGS - Resume</title>
@@ -18,6 +24,7 @@ const ResumePage: React.FC<IResumePage> = ({ experiences, languages }) => (
 
     <div className="flex flex-col lg:flex-row gap-5 md:container mx-auto justify-center">
       <ResumeExperienceList experiences={experiences} className="mt-5" />
+      <ResumeCertificateList certificates={certificates} className="mt-5" />
     </div>
   </Page>
 );
@@ -74,6 +81,50 @@ export async function getStaticProps(): Promise<{ props: IResumePage }> {
           position: 'Fullstack Developer',
           startDate: '2016-04-30',
           summary: `Developing web systems from scratch for local clients using AngularJS and ASP.NET MVC to get improvements in the clients processes and making their interactions and decisions easier.`,
+        },
+      ],
+      certificates: [
+        {
+          date: '2016-09-01',
+          id: 'microsoft-1',
+          issuer: 'Microsoft',
+          name: 'Microsoft Certified Solutions Associate: Web Applications Charter Member',
+        },
+        {
+          date: '2016-09-01',
+          id: 'microsoft-2',
+          issuer: 'Microsoft',
+          name: 'Microsoft Certified Solutions Developer: Web Applications',
+        },
+        {
+          date: '2015-12-01',
+          id: 'microsoft-3',
+          issuer: 'Microsoft',
+          name: 'Microsoft Certified Solutions Developer: Web Applications',
+        },
+        {
+          date: '2014-12-01',
+          id: 'microsoft-4',
+          issuer: 'Microsoft',
+          name: 'Microsoft Specialist',
+        },
+        {
+          date: '2014-10-01',
+          id: 'mug-1',
+          issuer: 'Microsoft User Group Argentina',
+          name: 'Cross Platform Mobile Development with Xamarin',
+        },
+        {
+          date: '2014-09-01',
+          id: 'microsoft-5',
+          issuer: 'Microsoft',
+          name: 'Microsoft Certified Professional',
+        },
+        {
+          date: '2013-01-01',
+          id: 'platzi-1',
+          issuer: 'Platzi',
+          name: 'Professional Frontend Course',
         },
       ],
     },
