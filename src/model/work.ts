@@ -1,8 +1,9 @@
 export interface IWork {
   company: string;
   endDate?: string;
-  position: string;
   highlights: string[];
+  id: string;
+  position: string;
   startDate: string;
   summary: string;
   url?: string;
