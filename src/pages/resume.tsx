@@ -3,17 +3,19 @@ import {
   ResumeCertificateList,
   ResumeExperienceList,
   ResumeLanguageList,
+  ResumeSkillList,
 } from '@/components';
-import { ICertificate, ILanguage, IWork } from '@/model';
+import { ICertificate, ILanguage, ISkill, IWork } from '@/model';
 import Head from 'next/head';
 
 interface IResumePage {
   certificates: ICertificate[];
   experiences: IWork[];
   languages: ILanguage[];
+  skills: ISkill[];
 }
 
-const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages }) => (
+const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages, skills }) => (
   <Page isContainer={false} className="h-screen" icon="identification" title="Resume">
     <Head>
       <title>MGS - Resume</title>
@@ -26,6 +28,8 @@ const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, language
       <ResumeExperienceList experiences={experiences} className="mt-5" />
       <ResumeCertificateList certificates={certificates} className="mt-5" />
     </div>
+
+    <ResumeSkillList skills={skills} className="mt-5" />
   </Page>
 );
 
@@ -125,6 +129,56 @@ export async function getStaticProps(): Promise<{ props: IResumePage }> {
           id: 'platzi-1',
           issuer: 'Platzi',
           name: 'Professional Frontend Course',
+        },
+      ],
+      skills: [
+        {
+          id: 'html5',
+          name: 'HTML5',
+        },
+        {
+          id: 'javascript',
+          name: 'Javascript',
+        },
+        {
+          id: 'angular',
+          name: 'Angular',
+        },
+        {
+          id: 'ionic',
+          name: 'ionic',
+        },
+        {
+          id: 'react',
+          name: 'React',
+        },
+        {
+          id: 'nextjs',
+          name: 'NextJS',
+        },
+        {
+          id: 'redux',
+          name: 'Redux',
+        },
+        {
+          id: 'nodejs',
+          name: 'NodeJS',
+        },
+        {
+          id: 'netcore',
+          name: '.NET Core',
+        },
+        {
+          id: 'mongodb',
+          name: 'MongoDB',
+        },
+        {
+          id: 'sqlserver',
+          name: 'SQL Server',
+        },
+        {
+          id: 'git',
+          name: 'GIT',
         },
       ],
     },
