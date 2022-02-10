@@ -7,7 +7,7 @@ interface IAboutMePage {
 }
 
 const AboutMePage: React.FC<IAboutMePage> = ({ profile }) => (
-  <Page className="h-screen w-screen" icon="user-circle" title="About Me">
+  <Page className="min-h-screen" icon="user-circle" title="About Me">
     <Head>
       <title>MGS - About Me</title>
       <link rel="icon" href="/favicon.ico" />
@@ -36,7 +36,18 @@ export async function getStaticProps(): Promise<{ props: IAboutMePage }> {
         },
         phone: '+543794245853',
         skype: 'max.g14',
-        profiles: [],
+        profiles: [
+          {
+            network: 'skype',
+            username: 'max.g14',
+            url: 'skype:max.g14?call',
+          },
+          {
+            network: 'linkedin',
+            username: 'maxigs7',
+            url: 'https://linkedin.com/ar/maxigs7',
+          },
+        ],
         summary: `<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis nulla atque debitis aspernatur unde est similique libero illum quisquam quos aperiam, sunt laudantium minus earum impedit amet? A, molestiae natus?</p>
         <p>Qui tempora veritatis consequatur, ut temporibus exercitationem fugiat perferendis amet pariatur dolorem tenetur dignissimos porro. Eaque similique repellat asperiores error sunt, reiciendis dolores, deleniti aperiam itaque sint neque minima explicabo.</p>
         <p>Voluptate magni provident dolorem, placeat aperiam sapiente eveniet in quaerat quae itaque exercitationem atque minima inventore, aut sint blanditiis voluptates. Molestiae sint magnam, cum nihil excepturi ad? Unde, deserunt maiores.</p>

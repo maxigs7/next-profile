@@ -20,7 +20,7 @@ export type IconType =
 
 type MapType = Record<IconType, React.ElementType<ComponentPropsWithoutRef<'svg'>>>;
 
-const classMap: MapType = {
+const titleIcons: MapType = {
   'academic-cap': AcademicCapIcon,
   briefcase: BriefcaseIcon,
   globe: GlobeIcon,
@@ -30,4 +30,4 @@ const classMap: MapType = {
   'user-circle': UserCircleIcon,
 };
 
-export const getIcon = (icon: IconType) => classMap[icon];
+export const getIcon = (icon: IconType) => titleIcons[icon];

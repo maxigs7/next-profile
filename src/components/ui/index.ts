@@ -1,3 +1,4 @@
+export * from './form';
 export { default as Heading } from './heading';
 export * from './logo';
 export { default as Navbar } from './navbar';

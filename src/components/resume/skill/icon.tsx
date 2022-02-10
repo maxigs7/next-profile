@@ -17,7 +17,7 @@ import { ComponentPropsWithoutRef } from 'react';
 
 type MapType = Record<SkillId, React.ElementType<ComponentPropsWithoutRef<'svg'>> | undefined>;
 
-const classMap: MapType = {
+const skillIcons: MapType = {
   angular: AngularIcon,
   git: GitIcon,
   html5: Html5Icon,
@@ -32,4 +32,4 @@ const classMap: MapType = {
   sqlserver: SqlServerIcon,
 };
 
-export const getIcon = (icon: SkillId) => classMap[icon];
+export const getIcon = (icon: SkillId) => skillIcons[icon];
