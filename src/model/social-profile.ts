@@ -1,4 +1,4 @@
-type SocialNetwork = 'facebook' | 'instagram' | 'linkedin' | 'twitter';
+export type SocialNetwork = 'discord' | 'facebook' | 'instagram' | 'linkedin' | 'skype' | 'twitter';
 
 export interface ISocialProfile {
   network: SocialNetwork;
