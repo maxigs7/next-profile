@@ -39,12 +39,13 @@ yarn dev
 - [x] Create Home Page
 - [x] Create About Me Page
 - [x] Create Resume Page
-- [ ] Create Contact Page
-- [ ] Integrate form with [Formspark](https://formspark.io/)
+- [x] Create Contact Page
+- [x] Integrate form with [Formspark](https://formspark.io/)
 - [ ] Add supabase
   - [ ] Add tables and structured data
   - [ ] Multilingual data
 - [ ] Support multilingual pages
+- [ ] Add Recaptcha
 
 ## Deploy on Vercel
 
