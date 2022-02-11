@@ -16,7 +16,7 @@ interface IResumePage {
 }
 
 const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages, skills }) => (
-  <Page isContainer={false} className="min-h-screen" icon="identification" title="Resume">
+  <Page isContainer={false} className="min-h-screen pb-3" icon="identification" title="Resume">
     <Head>
       <title>MGS - Resume</title>
       <link rel="icon" href="/favicon.ico" />

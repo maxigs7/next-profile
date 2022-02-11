@@ -7,7 +7,7 @@ interface IAboutMePage {
 }
 
 const AboutMePage: React.FC<IAboutMePage> = ({ profile }) => (
-  <Page className="min-h-screen" icon="user-circle" title="About Me">
+  <Page className="min-h-screen pb-3" icon="user-circle" title="About Me">
     <Head>
       <title>MGS - About Me</title>
       <link rel="icon" href="/favicon.ico" />

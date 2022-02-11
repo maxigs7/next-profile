@@ -10,7 +10,7 @@ interface IProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 const Page: React.FC<IProps> = ({ children, className, icon, isContainer = true, title }) => {
-  const classes = cx('relative py-20', isContainer && 'md:container mx-auto', className);
+  const classes = cx('relative pt-20', isContainer && 'md:container mx-auto', className);
   const Icon = useMemo(() => icon && getIcon(icon), [icon]);
   return (
     <div className={classes}>

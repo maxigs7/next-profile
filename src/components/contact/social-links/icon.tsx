@@ -21,6 +21,5 @@ const socialIcons: MapType = {
 };
 
 export const getSocialIcons = (icon: SocialNetwork) => {
-  console.log(icon, socialIcons);
   return socialIcons[icon];
 };
