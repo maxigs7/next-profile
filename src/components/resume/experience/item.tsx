@@ -5,8 +5,8 @@ import { ComponentProps, useMemo } from 'react';
 import Card from '../common/card';
 import TimeLabel from '../common/label';
 import { Text } from '../../ui';
-import formatDistance from '@/lib/formatDistance';
-import formatMonthYear from '@/lib/formatMonthYear';
+import formatDistance from '@/lib/useFormatDistance';
+import useFormatMonthYear from '@/lib/useFormatMonthYear';
 
 type Props = IWork & ComponentProps<'div'>;
 
@@ -19,8 +19,8 @@ const ExperienceItem: React.FC<Props> = ({
   startDate,
   summary,
 }) => {
-  const endMonthYear = useMemo(() => (endDate ? formatMonthYear(endDate) : 'Current'), [endDate]);
-  const startMonthYear = useMemo(() => formatMonthYear(startDate), [startDate]);
+  const endMonthYear = useFormatMonthYear(endDate) || 'Current';
+  const startMonthYear = useFormatMonthYear(startDate);
   const timeAgo = useMemo(() => formatDistance(startDate, endDate), [endDate, startDate]);
 
   return (

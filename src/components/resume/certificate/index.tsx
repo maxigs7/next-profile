@@ -1,3 +1,4 @@
+import { useLocale } from '@/hooks';
 import cx from '@/lib/classnames';
 import { ICertificate } from '@/model';
 import { ComponentProps } from 'react';
@@ -9,17 +10,20 @@ interface IProps extends ComponentProps<'div'> {
   certificates?: ICertificate[];
 }
 
-const CertificateList: React.FC<IProps> = ({ className, certificates = [] }) => (
-  <div className={cx('flex flex-col items-center', className)}>
-    <Title icon="academic-cap" className="mb-4 md:mb-8">
-      Certificates
-    </Title>
-    <div className="flex flex-col gap-5 md:gap-10 items-center">
-      {certificates.map((cert) => (
-        <CertificateItem className={cx('max-w-lg w-full', lineShort)} key={cert.id} {...cert} />
-      ))}
+const CertificateList: React.FC<IProps> = ({ className, certificates = [] }) => {
+  const { t } = useLocale();
+  return (
+    <div className={cx('flex flex-col items-center', className)}>
+      <Title icon="academic-cap" className="mb-4 md:mb-8">
+        {t('resume_certificate')}
+      </Title>
+      <div className="flex flex-col gap-5 md:gap-10 items-center">
+        {certificates.map((cert) => (
+          <CertificateItem className={cx('max-w-lg w-full', lineShort)} key={cert.id} {...cert} />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CertificateList;

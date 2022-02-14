@@ -1,4 +1,5 @@
 import { FormControl, Input, Label, Textarea } from '@/components';
+import { useLocale } from '@/hooks';
 import cx from '@/lib/classnames';
 import { IContact } from '@/model';
 import React, { useRef, useState } from 'react';
@@ -36,6 +37,7 @@ const validateForm = (contact: IContact): FormErrors | undefined => {
 };
 
 const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
+  const { t } = useLocale();
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -91,24 +93,24 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
     >
       <Message status={status} />
       <FormControl>
-        <Label>Full name</Label>
-        <Input placeholder="John Doe" name="fullName" />
+        <Label>{t('contact_label_fullName')}</Label>
+        <Input placeholder={t('contact_placeholder_fullName')} name="fullName" />
         {errors.fullName && <span className="text-red-500">{errors.fullName}</span>}
       </FormControl>
       <FormControl>
-        <Label>Email</Label>
-        <Input placeholder="jonh@example.com" name="email" type="email" />
+        <Label>{t('contact_label_email')}</Label>
+        <Input placeholder={t('contact_placeholder_email')} name="email" type="email" />
         {errors.email && <span className="text-red-500">{errors.email}</span>}
       </FormControl>
       <FormControl>
-        <Label>Subject</Label>
-        <Input placeholder="Subject" name="subject" />
+        <Label>{t('contact_label_subject')}</Label>
+        <Input placeholder={t('contact_placeholder_subject')} name="subject" />
         {errors.subject && <span className="text-red-500">{errors.subject}</span>}
       </FormControl>
 
       <FormControl>
-        <Label>Message</Label>
-        <Textarea placeholder="Write your message..." name="message" rows={5} />
+        <Label>{t('contact_label_message')}</Label>
+        <Textarea placeholder={t('contact_placeholder_message')} name="message" rows={5} />
         {errors.message && <span className="text-red-500">{errors.message}</span>}
       </FormControl>
 
@@ -117,7 +119,7 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
         type="submit"
         disabled={isSubmitting}
       >
-        Submit
+        {t('contact_button_submit')}
       </button>
     </form>
   );

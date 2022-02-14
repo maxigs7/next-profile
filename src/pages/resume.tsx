@@ -5,6 +5,7 @@ import {
   ResumeLanguageList,
   ResumeSkillList,
 } from '@/components';
+import { useLocale } from '@/hooks';
 import { ICertificate, ILanguage, ISkill, IWork } from '@/model';
 import Head from 'next/head';
 
@@ -15,23 +16,32 @@ interface IResumePage {
   skills: ISkill[];
 }
 
-const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages, skills }) => (
-  <Page isContainer={false} className="min-h-screen pb-3" icon="identification" title="Resume">
-    <Head>
-      <title>MGS - Resume</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const ResumePage: React.FC<IResumePage> = ({ certificates, experiences, languages, skills }) => {
+  const { t } = useLocale();
 
-    <ResumeLanguageList languages={languages} className="mt-5" />
+  return (
+    <Page
+      isContainer={false}
+      className="min-h-screen pb-3"
+      icon="identification"
+      title={t('resume_title')}
+    >
+      <Head>
+        <title>MGS - {t('resume_title')}</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <div className="flex flex-col lg:flex-row gap-5 md:container mx-auto justify-center">
-      <ResumeExperienceList experiences={experiences} className="mt-5" />
-      <ResumeCertificateList certificates={certificates} className="mt-5" />
-    </div>
+      <ResumeLanguageList languages={languages} className="mt-5" />
 
-    <ResumeSkillList skills={skills} className="mt-5" />
-  </Page>
-);
+      <div className="flex flex-col lg:flex-row gap-5 md:container mx-auto justify-center">
+        <ResumeExperienceList experiences={experiences} className="mt-5" />
+        <ResumeCertificateList certificates={certificates} className="mt-5" />
+      </div>
+
+      <ResumeSkillList skills={skills} className="mt-5" />
+    </Page>
+  );
+};
 
 export default ResumePage;
 

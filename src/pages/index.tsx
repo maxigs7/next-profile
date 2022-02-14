@@ -17,7 +17,7 @@ const HomePage: React.FC<IHomePage> = ({ profile }) => {
   return (
     <Page isContainer={false} className="h-screen w-screen">
       <Head>
-        <title>MGS - Home</title>
+        <title>MGS - {t('home_title')}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image

@@ -5,12 +5,12 @@ import { ComponentProps } from 'react';
 import Card from '../common/card';
 import TimeLabel from '../common/label';
 import { Text } from '../../ui';
-import formatMonthYear from '@/lib/formatMonthYear';
+import useFormatMonthYear from '@/lib/useFormatMonthYear';
 
 type Props = ICertificate & ComponentProps<'div'>;
 
 const CertificateItem: React.FC<Props> = ({ className, date, id, issuer, name }) => {
-  const monthYear = formatMonthYear(date);
+  const monthYear = useFormatMonthYear(date);
   return (
     <Card className={cx('p-3 pt-5 relative mx-2 md:mx-0', className)}>
       <TimeLabel className="absolute top-0 right-0 rounded-tr-xl">{monthYear}</TimeLabel>
