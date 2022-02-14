@@ -1,5 +1,9 @@
 {
   "home_title_im": "Hola, soy",
   "home_more_about_me_button": "Mas acerca de mi",
-  "home_download_resume_button": "Descargar CV"
+  "home_download_resume_button": "Descargar CV",
+  "menu_about_me": "Acerca de mi",
+  "menu_contact": "Contacto",
+  "menu_home": "Inicio",
+  "menu_resume": "CV"
 }

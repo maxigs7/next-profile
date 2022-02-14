@@ -1,5 +1,9 @@
 {
   "home_title_im": "Hi, I'm",
   "home_more_about_me_button": "More About Me",
-  "home_download_resume_button": "Download Resume"
+  "home_download_resume_button": "Download Resume",
+  "menu_about_me": "About Me",
+  "menu_contact": "Contact",
+  "menu_home": "Home",
+  "menu_resume": "Resume"
 }

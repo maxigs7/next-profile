@@ -1,8 +1,7 @@
-import ActiveLink from '@/components/active-link';
-import React, { ComponentProps } from 'react';
+import ActiveLink, { IActiveLinkProps } from '@/components/active-link';
+import React from 'react';
 
-interface IProps extends ComponentProps<'div'> {
-  href: string;
+interface IProps extends Omit<IActiveLinkProps, 'activeClassName'> {
   onClick?: () => void;
 }
 

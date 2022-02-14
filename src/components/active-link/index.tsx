@@ -3,11 +3,11 @@ import { useRouter } from 'next/router';
 import React, { PropsWithChildren } from 'react';
 import { Children } from 'react';
 
-interface IProps extends PropsWithChildren<LinkProps> {
+export interface IActiveLinkProps extends PropsWithChildren<LinkProps> {
   activeClassName: string;
 }
 
-const ActiveLink: React.FC<IProps> = ({ activeClassName, children, ...props }) => {
+const ActiveLink: React.FC<IActiveLinkProps> = ({ activeClassName, children, ...props }) => {
   const { asPath } = useRouter();
   const child: any = Children.only(children);
   const childClassName = child.props.className || '';

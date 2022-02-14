@@ -24,5 +24,6 @@ const translate =
     return value;
   };
 
+export type TranslationTokens = keyof LanguageType;
 export type TranslationKey = keyof TranslationType;
 export default translate;
