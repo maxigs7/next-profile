@@ -30,10 +30,10 @@ const AboutMeCard: React.FC<IProps> = ({ className, profile }) => {
       <Text className="font-medium">
         {profile.firstName} {profile.lastName}
       </Text>
-      <Text className="uppercase text-sm">{profile.label}</Text>
+      <Text className="uppercase text-sm">{profile.title}</Text>
       <Text className="flex items-center justify-center md:justify-start mt-5 text-sm">
         <LocationMarkerIcon className="w-4 h-4 mr-1" />
-        {profile.location.city}, {profile.location.country}
+        {profile.city}, {profile.country}
       </Text>
     </div>
   );

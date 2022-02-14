@@ -1,6 +1,6 @@
 import { ContactForm, ContactSocialLinks, Page } from '@/components';
+import { useContactForm } from '@/hooks';
 import { IContact, ISocialProfile } from '@/model';
-import { useContactForm } from 'hooks';
 import Head from 'next/head';
 
 interface IContactPage {

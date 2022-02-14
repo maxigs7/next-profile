@@ -1,16 +1,16 @@
-import { ILocation } from './location';
 import { ISocialProfile } from './social-profile';
 
 export interface IProfile {
+  city: string;
+  country: string;
   email: string;
   firstName: string;
   image: string;
-  label: string;
   lastName: string;
-  location: ILocation;
   phone?: string;
   skype?: string;
   profiles: ISocialProfile[];
   summary?: string;
+  title: string;
   url?: string;
 }
