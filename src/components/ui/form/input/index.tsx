@@ -1,9 +1,7 @@
 import cx from '@/lib/classnames';
 import React from 'react';
 
-interface IProps extends React.ComponentProps<'input'> {}
-
-const Input: React.FC<IProps> = ({ className, type = 'text', ...props }) => {
+const Input: React.FC<React.ComponentProps<'input'>> = ({ className, type = 'text', ...props }) => {
   return (
     <input
       type={type}

@@ -1,9 +1,12 @@
 import cx from '@/lib/classnames';
 import React from 'react';
 
-interface IProps extends React.ComponentProps<'textarea'> {}
-
-const Textarea: React.FC<IProps> = ({ children, className, rows = 3, ...props }) => {
+const Textarea: React.FC<React.ComponentProps<'textarea'>> = ({
+  children,
+  className,
+  rows = 3,
+  ...props
+}) => {
   return (
     <textarea
       className={cx(
