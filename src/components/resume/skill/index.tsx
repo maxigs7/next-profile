@@ -19,7 +19,7 @@ const SkillList: React.FC<IProps> = ({ className, skills }) => {
       </Heading>
       <div className="flex flex-col flex-wrap justify-center items-center gap-5 sm:flex-row sm:gap-7 sm:mx-3 md:mx-auto md:gap-14 md:container">
         {skills.map((skill) => (
-          <SkillItem {...skill} key={skill.key} />
+          <SkillItem {...skill} key={skill.identifier} identifier={skill.identifier} />
         ))}
       </div>
     </div>
