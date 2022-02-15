@@ -1,7 +1,7 @@
 export interface ICertificate {
   date: string;
-  id: string;
+  id: number;
   issuer: string;
+  issuerId: string;
   name: string;
-  url?: string;
 }

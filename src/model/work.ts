@@ -1,6 +1,7 @@
 export interface IWork {
   company: string;
-  endDate?: string;
+  companyId: string;
+  endDate: string | null;
   highlights: string[];
   id: string;
   position: string;

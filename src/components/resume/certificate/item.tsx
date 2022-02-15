@@ -7,9 +7,9 @@ import TimeLabel from '../common/label';
 import { Text } from '../../ui';
 import useFormatMonthYear from '@/lib/useFormatMonthYear';
 
-type Props = ICertificate & ComponentProps<'div'>;
+type Props = ICertificate & Omit<ComponentProps<'div'>, 'id'>;
 
-const CertificateItem: React.FC<Props> = ({ className, date, id, issuer, name }) => {
+const CertificateItem: React.FC<Props> = ({ className, date, issuer, issuerId, name }) => {
   const monthYear = useFormatMonthYear(date);
   return (
     <Card className={cx('p-3 pt-5 relative mx-2 md:mx-0', className)}>
@@ -20,7 +20,7 @@ const CertificateItem: React.FC<Props> = ({ className, date, id, issuer, name })
           <Image
             className="object-left-top"
             alt={issuer}
-            src={`/${id.split('-')[0]}.png`}
+            src={`/${issuerId}.png`}
             quality={80}
             layout="fill"
             objectFit="contain"

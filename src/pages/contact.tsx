@@ -1,6 +1,8 @@
+import { getProfileSocials } from '@/api';
 import { ContactForm, ContactSocialLinks, Page } from '@/components';
 import { useContactForm, useLocale } from '@/hooks';
 import { IContact, ISocialProfile } from '@/model';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 
 interface IContactPage {
@@ -30,21 +32,11 @@ const ContactPage: React.FC<IContactPage> = ({ profiles }) => {
 
 export default ContactPage;
 
-export async function getStaticProps(): Promise<{ props: IContactPage }> {
+export const getServerSideProps: GetServerSideProps = async () => {
+  const profiles = await getProfileSocials();
   return {
     props: {
-      profiles: [
-        {
-          network: 'skype',
-          username: 'max.g14',
-          url: 'skype:max.g14?call',
-        },
-        {
-          network: 'linkedin',
-          username: 'maxigs7',
-          url: 'https://linkedin.com/ar/maxigs7',
-        },
-      ],
+      profiles,
     },
   };
-}
+};

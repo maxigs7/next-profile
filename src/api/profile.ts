@@ -1,7 +1,7 @@
 import { TranslationKey } from '@/i18n';
 import { supabase } from '@/lib/supabase';
 import { IProfile } from '@/model';
-import { PROFILE_ID } from 'config';
+import { PROFILE_USERNAME } from 'config';
 
 const handler = async (locale: TranslationKey): Promise<IProfile> => {
   const {
@@ -23,7 +23,7 @@ const handler = async (locale: TranslationKey): Promise<IProfile> => {
     `,
     )
     .eq('profile_lang.lang', locale)
-    .eq('id', PROFILE_ID)
+    .eq('username', PROFILE_USERNAME)
     .single();
 
   return {

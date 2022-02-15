@@ -49,10 +49,11 @@ const formatDistanceTokenReplacement =
     return result;
   };
 
-const useFormatDistance = (startDate: string, endDate: string | Date = new Date()) => {
+const useFormatDistance = (startDate: string, endDate: string | Date | null = new Date()) => {
   const { dateLocale, locale } = useLocale();
   const start = toDate(startDate);
-  const end = typeof endDate === 'string' ? toDate(endDate) : endDate;
+  const safeEnd = endDate ?? new Date();
+  const end = typeof safeEnd === 'string' ? toDate(safeEnd) : safeEnd;
 
   const duration = intervalToDuration({
     start,

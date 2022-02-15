@@ -7,19 +7,21 @@ import {
   TwitterIcon,
 } from '@/components';
 import { SocialNetwork } from '@/model';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, useMemo } from 'react';
 
 type MapType = Record<SocialNetwork, React.ElementType<ComponentPropsWithoutRef<'svg'>>>;
 
-const socialIcons: MapType = {
-  discord: DiscordIcon,
-  facebook: FacebookIcon,
-  instagram: InstagramIcon,
-  linkedin: LinkedinIcon,
-  skype: SkypeIcon,
-  twitter: TwitterIcon,
-};
-
-export const getSocialIcons = (icon: SocialNetwork) => {
+export const useSocialIcons = (icon: SocialNetwork) => {
+  const socialIcons: MapType = useMemo(
+    () => ({
+      discord: DiscordIcon,
+      facebook: FacebookIcon,
+      instagram: InstagramIcon,
+      linkedin: LinkedinIcon,
+      skype: SkypeIcon,
+      twitter: TwitterIcon,
+    }),
+    [],
+  );
   return socialIcons[icon];
 };

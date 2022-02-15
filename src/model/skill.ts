@@ -13,7 +13,8 @@ export type SkillId =
   | 'sqlserver';
 
 export interface ISkill {
-  id: SkillId;
+  id: number;
+  identifier: SkillId;
   level?: number;
   name: string;
 }

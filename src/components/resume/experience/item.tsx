@@ -1,11 +1,11 @@
 import cx from '@/lib/classnames';
 import { IWork } from '@/model';
 import Image from 'next/image';
-import { ComponentProps, useMemo } from 'react';
+import { ComponentProps } from 'react';
 import Card from '../common/card';
 import TimeLabel from '../common/label';
 import { Text } from '../../ui';
-import formatDistance from '@/lib/useFormatDistance';
+import useFormatDistance from '@/lib/useFormatDistance';
 import useFormatMonthYear from '@/lib/useFormatMonthYear';
 
 type Props = IWork & ComponentProps<'div'>;
@@ -13,15 +13,15 @@ type Props = IWork & ComponentProps<'div'>;
 const ExperienceItem: React.FC<Props> = ({
   className,
   company,
+  companyId,
   endDate,
-  id,
   position,
   startDate,
   summary,
 }) => {
   const endMonthYear = useFormatMonthYear(endDate) || 'Current';
   const startMonthYear = useFormatMonthYear(startDate);
-  const timeAgo = useMemo(() => formatDistance(startDate, endDate), [endDate, startDate]);
+  const timeAgo = useFormatDistance(startDate, endDate);
 
   return (
     <Card className={cx('p-3 pt-5 relative mx-2 md:mx-0', className)}>
@@ -34,7 +34,7 @@ const ExperienceItem: React.FC<Props> = ({
           <Image
             className="object-center sm:object-left"
             alt={company}
-            src={`/${id}.png`}
+            src={`/${companyId}.png`}
             quality={80}
             layout="fill"
             objectFit="contain"

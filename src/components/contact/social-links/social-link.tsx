@@ -1,13 +1,13 @@
 import cx from '@/lib/classnames';
 import { ISocialProfile } from '@/model';
-import { getSocialIcons } from './icon';
+import { useSocialIcons } from './icon';
 
 interface IProps extends React.ComponentProps<'div'> {
   profile: ISocialProfile;
 }
 
 const SocialLink: React.FC<IProps> = ({ className, profile }) => {
-  const Icon = getSocialIcons(profile.network);
+  const Icon = useSocialIcons(profile.network);
   if (!Icon) return null;
 
   return (

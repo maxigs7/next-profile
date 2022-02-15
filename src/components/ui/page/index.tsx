@@ -1,7 +1,7 @@
 import cx from '@/lib/classnames';
-import { ComponentPropsWithoutRef, useMemo } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import Heading from '../heading';
-import { getIcon, IconType } from './icon-title';
+import { useIcon, IconType } from './icon-title';
 
 interface IProps extends ComponentPropsWithoutRef<'div'> {
   icon?: IconType;
@@ -11,7 +11,8 @@ interface IProps extends ComponentPropsWithoutRef<'div'> {
 
 const Page: React.FC<IProps> = ({ children, className, icon, isContainer = true, title }) => {
   const classes = cx('relative pt-20', isContainer && 'md:container mx-auto', className);
-  const Icon = useMemo(() => icon && getIcon(icon), [icon]);
+  const Icon = useIcon(icon);
+
   return (
     <div className={classes}>
       {title && (

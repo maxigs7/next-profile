@@ -1,13 +1,13 @@
-import { getIcon, Heading, IconType } from '@/components';
+import { useIcon, Heading, IconType } from '@/components';
 import cx from '@/lib/classnames';
-import { ComponentPropsWithoutRef, useMemo } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 interface IProps extends ComponentPropsWithoutRef<'div'> {
   icon?: IconType;
 }
 
 const Title: React.FC<IProps> = ({ children, className, icon }) => {
-  const Icon = useMemo(() => icon && getIcon(icon), [icon]);
+  const Icon = useIcon(icon);
   return (
     <Heading
       as="h2"
