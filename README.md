@@ -41,12 +41,19 @@ yarn dev
 - [x] Create Resume Page
 - [x] Create Contact Page
 - [x] Integrate form with [Formspark](https://formspark.io/)
-- [x] Add supabase
-  - [ ] Add tables and structured data
-  - [ ] Multilingual data
+- [x] Add [supabase](https://supabase.com/)
+  - [x] Add tables and structured data
+  - [x] Multilingual data
 - [x] Support multilingual pages
 - [ ] Add language selector
-- [ ] Add Recaptcha
+- [ ] Add recaptcha
+- [ ] Add animations
+- [ ] Add analytics
+- [ ] Add administration panel
+  - [ ] Profile admin
+  - [ ] Experiences admin
+  - [ ] Certificates admin
+  - [ ] Skills admin
 
 ## Deploy on Vercel
 
