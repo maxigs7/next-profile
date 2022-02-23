@@ -46,7 +46,7 @@ yarn dev
   - [x] Multilingual data
 - [x] Support multilingual pages
 - [ ] Add language selector
-- [ ] Add recaptcha
+- [x] Add recaptcha
 - [ ] Add animations
 - [ ] Add analytics
 - [ ] Add administration panel

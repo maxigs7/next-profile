@@ -1,17 +1,20 @@
-import { FormControl, Input, Label, Textarea } from '@/components';
+import { FormControl, Input, Label, Recaptcha, Textarea } from '@/components';
 import { useLocale } from '@/hooks';
 import cx from '@/lib/classnames';
 import { IContact } from '@/model';
 import React, { useRef, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import Message from './message';
 
-type FormErrors = Partial<{ [key in keyof IContact]: string }>;
-
+type FormErrors = Partial<{ [key in keyof IContact]: string }> & { captcha?: string };
+interface DataForm extends IContact {
+  'g-recaptcha-response': string;
+}
 interface IProps extends React.ComponentProps<'form'> {
-  onSubmitForm: (contact: IContact) => Promise<void>;
+  onSubmitForm: (contact: DataForm) => Promise<void>;
 }
 
-const validateForm = (contact: IContact): FormErrors | undefined => {
+const validateForm = (contact: DataForm): FormErrors | undefined => {
   const errors: FormErrors = {};
   let noErrors = true;
   if (!contact.fullName.trim()) {
@@ -31,6 +34,11 @@ const validateForm = (contact: IContact): FormErrors | undefined => {
     noErrors = false;
   }
 
+  if (!contact['g-recaptcha-response'].trim()) {
+    errors.message = 'Captcha is required';
+    noErrors = false;
+  }
+
   if (noErrors) return undefined;
 
   return errors;
@@ -42,8 +50,9 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [status, setStatus] = useState<'success' | 'error' | undefined>(undefined);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const onSubmitHandler = (e: React.SyntheticEvent) => {
+  const onSubmitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -54,11 +63,13 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
       subject: { value: string };
     };
 
-    const contact = {
+    const recaptchaValue = recaptchaRef.current?.getValue() || '';
+    const contact: DataForm = {
       email: target.email.value,
       fullName: target.fullName.value,
       message: target.message.value,
       subject: target.subject.value,
+      'g-recaptcha-response': recaptchaValue,
     };
     const errors = validateForm(contact);
     if (errors) {
@@ -66,23 +77,22 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
       return;
     }
 
-    setErrors({});
-    setIsSubmitting(true);
-    return onSubmitForm(contact)
-      .then(
-        () => {
-          setStatus('success');
-          if (formRef.current) {
-            formRef.current.reset();
-          }
-        },
-        () => {
-          setStatus('error');
-        },
-      )
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    // Else reCAPTCHA was executed successfully so proceed with the
+    // alert
+    try {
+      setErrors({});
+      setIsSubmitting(true);
+      await onSubmitForm(contact);
+      setStatus('success');
+      if (formRef.current) {
+        formRef.current.reset();
+      }
+    } catch (error) {
+      setStatus('error');
+    } finally {
+      recaptchaRef.current?.reset();
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -112,6 +122,11 @@ const ContactForm: React.FC<IProps> = ({ className, onSubmitForm }) => {
         <Label>{t('contact_label_message')}</Label>
         <Textarea placeholder={t('contact_placeholder_message')} name="message" rows={5} />
         {errors.message && <span className="text-red-500">{errors.message}</span>}
+      </FormControl>
+
+      <FormControl>
+        <Recaptcha size="normal" ref={recaptchaRef} />
+        {errors.captcha && <span className="text-red-500">{errors.captcha}</span>}
       </FormControl>
 
       <button
